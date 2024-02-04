@@ -1,0 +1,75 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+}
+
+/* Header Styles */
+header {
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1.2rem;
+}
+
+/* Navbar Styles */
+nav {
+    background-color: #f8f9fa;
+}
+
+nav a {
+    color: #007bff;
+    font-weight: bold;
+}
+
+nav a:hover,
+nav a:focus {
+    color: #0056b3;
+}
+
+/* Main Content Styles */
+main {
+    margin-top: 2rem;
+}
+
+section.landing {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+section.landing h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+section.landing p {
+    font-size: 1.1rem;
+    line-height: 1.4;
+    color: #333;
+}
+
+img{
+    width: 300px;
+    height: 350px;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #f8f9fa;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+footer p {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
