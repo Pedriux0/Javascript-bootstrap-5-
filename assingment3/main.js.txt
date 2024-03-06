@@ -1,0 +1,86 @@
+const images = [
+  ['cat1.jpg', 'cat2.jpg', 'cat3.jpg'],
+  ['dog1.jpeg', 'dog2.jpeg', 'dog3.jpg'],
+  ['hamster1.jpg', 'hamster2.jpg', 'hamster3.jpg']
+];
+
+const themes = images.length;
+const imageContainers = document.querySelectorAll('img');
+let timer;
+
+function pickRandomImages() {
+  const result = [];
+
+  for (let i = 0; i < themes; i++) {
+    result.push(images[i][Math.floor(Math.random() * images[i].length)]);
+  }
+
+  return result;
+}
+
+function changeImages() {
+  const randomImages = pickRandomImages();
+
+  for (let i = 0; i < themes; i++) {
+    imageContainers[i].src = `/assets/${randomImages[i]}`;
+    imageContainers[i].dataset.theme = randomImages[i].split('.')[0];
+  }
+
+  resetTimer(refreshTimeInput.value);
+  increaseCounter();
+}
+
+function initializeImages() {
+  const randomImages = pickRandomImages();
+
+  for (let i = 0; i < themes; i++) {
+    imageContainers[i].src = `/assets/${randomImages[i]}`;
+    imageContainers[i].dataset.theme = randomImages[i].split('.')[0];
+  }
+
+  resetTimer(refreshTimeInput.value);
+  document.getElementById('image-counter').innerText = 'Image Change Counter: 0';  // Set the counter to 0
+}
+
+function resetTimer(newInterval) {
+  clearInterval(timer);
+  timer = setInterval(() => {
+    changeImages();
+  }, newInterval);
+}
+
+function increaseCounter() {
+  const counterElement = document.getElementById('image-counter');
+  let currentCounter = parseInt(counterElement.innerText.split(':')[1].trim());
+  counterElement.innerText = `Image Change Counter: ${currentCounter + 1}`;
+}
+
+
+function doAnimation(event) {
+  const target = event.target;
+  target.classList.remove('spin');
+  setTimeout(() => {
+    target.classList.add('spin');
+  }, 0);
+}
+
+const refreshTimeInput = document.getElementById('refresh-time');
+const randomizeButton = document.getElementById('randomize-button');
+
+refreshTimeInput.addEventListener('input', () => {
+  const inputValue = parseInt(refreshTimeInput.value);
+  if (inputValue >= 500 && inputValue <= 10000) {
+    resetTimer(inputValue);
+    refreshTimeInput.setCustomValidity('');
+  } else {
+    refreshTimeInput.setCustomValidity('Please enter a value between 500 and 10000.');
+  }
+});
+
+randomizeButton.addEventListener('click', changeImages);
+
+initializeImages();
+
+imageContainers.forEach((img) => {
+  img.addEventListener('click', doAnimation);
+});
