@@ -1,0 +1,29 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+    min-height: 100vh; /*minimum height of the viewport */
+}
+
+/* header and footer */
+header, footer {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Styles for circles */
+circle {
+    cursor: pointer;
+    transition: fill 0.3s ease;
+}
+
